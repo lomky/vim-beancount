@@ -93,6 +93,8 @@ class Source(Base):
         for entry in entries:
             if isinstance(entry, data.Open):
                 accounts.add(entry.account)
+            elif isinstance(entry, data.Close):
+                accounts.remove(entry.account)
             if hasattr(entry, 'links') and entry.links:
                 links.update(entry.links)
             if hasattr(entry, 'tags') and entry.tags:
